@@ -13,7 +13,7 @@ import AddExpense from "./pages/user/AddExpense.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import UserHome from "./pages/user/UserHome.jsx";
 import {ChatAssistant} from "./pages/user/ChatAssistant.jsx";
-import RecycleBin from "./pages/user/RecycleBin.jsx";
+// import RecycleBin from "./pages/user/RecycleBin.jsx";
 import Setting from "./pages/user/Setting.jsx";
 import CategoriesPage from "./pages/user/CategoriesPage.jsx";
 import ReportsPage from "./pages/user/ReportPage.jsx";
@@ -31,7 +31,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="add-expense" element={<AddExpense />} />
             <Route path="expenses" element={<ViewExpenses />} />
             <Route path="assistant" element={<ChatAssistant/>} />
-            <Route path="recycle-bin" element={<RecycleBin/>} />
+            {/* <Route path="recycle-bin" element={<RecycleBin/>} /> */}
             <Route path="settings" element={<Setting />} />
             <Route path="reports" element={<ReportsPage />} />
             <Route path="categories" element={<CategoriesPage />} />
