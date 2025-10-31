@@ -33,7 +33,7 @@ import { serverBaseURL } from "../config/config";
 import { getAccessTokenFromLocalStorage } from "../services/LocalStorageService";
 
 export const axiosInstance = axios.create({
-  baseURL: serverBaseURL, // e.g. "http://localhost:8081/api"
+  baseURL: import.meta.env.VITE_BACKEND_URL, // e.g. "http://localhost:8081/api"
 });
 
 // Attach token automatically
