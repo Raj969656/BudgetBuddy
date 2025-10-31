@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { createUser } from "../services/UserService";
+import axios from "axios";
 import { toast } from "react-toastify";
 import GradientBackground from "../components/GradientBackground.jsx";
-import { Link } from "react-router-dom"; // 👈 import Link
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +16,9 @@ const Signup = () => {
   const [errors, setErrors] = useState([]);
   const [creating, setCreating] = useState(false);
 
+  // ✅ Backend API Base URL (update only if backend URL changes)
+  const API_URL = "https://budgetbuddy-backend-h5n6.onrender.com/api";
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -26,16 +29,17 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setCreating(true);
     setErrors([]);
 
     try {
-      const response = await createUser(formData);
-      console.log(response);
+      // ✅ Send data to backend
+      const response = await axios.post(`${API_URL}/auth/register`, formData);
+      console.log("User created:", response.data);
 
-      toast.success("User is created Successfully..");
+      toast.success("User created successfully ✅");
 
+      // Reset form
       setFormData({
         username: "",
         email: "",
@@ -44,13 +48,15 @@ const Signup = () => {
         age: "",
       });
     } catch (error) {
-      if (error.status === 400) {
+      console.error("Signup error:", error);
+
+      if (error.response && error.response.status === 400) {
         setErrors(error.response.data);
-        toast.error("Validation error");
-      } else if (error.status === 403) {
-        toast.error("You don't have permission to create user.");
+        toast.error("Validation error ⚠️");
+      } else if (error.response && error.response.status === 403) {
+        toast.error("You don't have permission to create a user ❌");
       } else {
-        toast.error("Server error");
+        toast.error("Server error ⚙️");
       }
     } finally {
       setCreating(false);
@@ -63,16 +69,19 @@ const Signup = () => {
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
           Create Your Account
         </h2>
+
+        {/* Validation Errors */}
         <div className="py-3">
           {errors.length > 0 &&
             errors.map((error, i) => (
-              <div key={i} className="p-2 border-red-300 mb-2 border rounded">
+              <div key={i} className="p-2 border border-red-300 mb-2 rounded">
                 <p className="text-red-400">
-                  {error.property.toUpperCase()}: {error.errorValue}
+                  {error.property?.toUpperCase()}: {error.errorValue}
                 </p>
               </div>
             ))}
         </div>
+
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Username */}
           <div>
@@ -160,18 +169,18 @@ const Signup = () => {
             />
           </div>
 
-          {/* Submit */}
+          {/* Submit Button */}
           <div>
             <button
               disabled={creating}
               type="submit"
               className="disabled:bg-gray-300 w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition duration-300"
             >
-              {creating ? "Creating user.." : "Sign Up"}
+              {creating ? "Creating user..." : "Sign Up"}
             </button>
           </div>
 
-          {/* Already have account? */}
+          {/* Already have an account */}
           <p className="text-center text-gray-600 mt-4">
             Already have an account?{" "}
             <Link to="/login" className="text-indigo-600 hover:underline">
