@@ -6,7 +6,7 @@ import {
 } from "../services/LocalStorageService";
 
 export const axiosInstance = axios.create({
-  baseURL: serverBaseURL,
+  baseURL: https://budgetbuddy-backend-h5n6.onrender.com,
 });
 
 axiosInstance.interceptors.request.use(
