@@ -2,7 +2,7 @@ BudgetBuddy — Personal Finance Tracker (MERN Stack)
 
 🪙 BudgetBuddy — Personal Finance Tracker (MERN Stack)
 
-Live Demo: [Add your deployed link here — e.g., https://budgetbuddy.vercel.app]
+Live Demo: https://sweet-duckanoo-b3b3dc.netlify.app/
 Frontend: React, Tailwind CSS
 Backend: Node.js, Express.js
 Database: MongoDB Atlas
@@ -33,8 +33,8 @@ Deployment: Vercel (Frontend), Render (Backend), MongoDB Atlas
 ⚙️ Installation & Setup
 
 1️⃣ Clone Repositories
-Frontend: git clone https://github.com/Raj969656/BudgetBuddy.git
-Backend: git clone https://github.com/Raj969656/BudgetBuddy-backend.git
+Frontend:  https://sweet-duckanoo-b3b3dc.netlify.app/
+Backend:  https://budgetbuddy-backend-h5n6.onrender.com
 
 2️⃣ Backend Setup
 cd BudgetBuddy-backend
