@@ -1,12 +1,20 @@
-            {
-                "src": "/pngegg.png",
-                "sizes": "192x192",
-                "type": "image/png"
-            },
-            {
-                "src": "/pngegg.png",
-                "sizes": "512x512",
-                "type": "image/png"
-            }
-        ]
-    }
+{
+    "name": "BudgetBuddy",
+    "short_name": "BudgetBuddy",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "/pngegg.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/pngegg.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
